@@ -10,6 +10,10 @@ jobs:
         uses: actions/checkout@v4
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+
+      - name: Start Python 3 HTTP server
+        run: python3 -m http.server 8000 &
+     #   background: true
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
