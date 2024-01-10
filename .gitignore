@@ -1,0 +1,5 @@
+
+#ignore this packages
+.DS_store
+
+/node_modules
