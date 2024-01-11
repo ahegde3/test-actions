@@ -23,10 +23,10 @@ jobs:
         id: check_status
        # run: echo "::set-output name=status::${{ job.error }}${{ job.Error}}"
         if: steps.Cypress_run.outcome != 'success' 
-        run: echo "failure"
+        run: echo "::set-output name=status::failure"
 
       - name: Create issue on failure
-        if: ${{ steps.check_status.outputs == 'failure' }}
+        if: ${{ steps.check_status.outputs.status == 'failure' }}
         run: |
           GITHUB_TOKEN=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
           REPO_OWNER=ahegde3
