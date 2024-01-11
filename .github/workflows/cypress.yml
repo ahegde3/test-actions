@@ -14,13 +14,15 @@ jobs:
       - name: Start Python 3 HTTP server
         run: python3 -m http.server 8000 &
      #   background: true
-      - name: Cypress run
+      - name: Cypress_run
         uses: cypress-io/github-action@v6
         with:
           start: npx cypress open  
         continue-on-error: true  # Continue even if Cypress tests fail  
       - name: Check Cypress test status
         id: check_status
-        run: echo "::set-output name=status::${{ job.error }}${{ job.Error}}"
-        continue-on-error: true
+       # run: echo "::set-output name=status::${{ job.error }}${{ job.Error}}"
+        if: steps.Cypress_run.outcome != 'success' 
+        run: echo "failed"
+
    
