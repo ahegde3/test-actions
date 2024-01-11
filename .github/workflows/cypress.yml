@@ -17,4 +17,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npx cypress open        
+          start: npx cypress open    
+     - name: Check Cypress test status
+        id: check_status
+        run: echo "::set-output name=status::${{ job.status }}"
+        continue-on-error: true
+   
