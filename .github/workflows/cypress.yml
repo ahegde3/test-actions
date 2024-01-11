@@ -21,6 +21,6 @@ jobs:
         continue-on-error: true  # Continue even if Cypress tests fail  
       - name: Check Cypress test status
         id: check_status
-        run: echo "::set-output name=status::${{ job.status }}${{ job.error && 'success' || 'failure' }}"
+        run: echo "::set-output name=status::${{ job.status }}${{ job.Error && 'success' || 'failure' }}"
         continue-on-error: true
    
